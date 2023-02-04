@@ -31,7 +31,7 @@ public class Movement : MonoBehaviour
     void FixedUpdate()
     {
         //KillBehaviour.PLATFORM_TAG;
-        if(Input.GetKey(Jump)&&IsGrounded){
+        if(Input.GetKeyDown(Jump)&&IsGrounded){
             gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);
             IsGrounded=false;
             Debug.Log("Jump_registerd!");
@@ -39,7 +39,7 @@ public class Movement : MonoBehaviour
         if(Input.GetKey(Left)){
             gameObject.transform.position+=new Vector3(-speed,0,0);
         }
-        if(Input.GetKey(Eat))
+        if(Input.GetKeyDown(Eat))
         {
 
             List<Collider2D> collidedObjects = new();
