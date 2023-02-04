@@ -31,7 +31,7 @@ public class Movement : MonoBehaviour
     void FixedUpdate()
     {
         //KillBehaviour.PLATFORM_TAG;
-        if(Input.GetKeyDown(Jump)&&IsGrounded){
+        if(Input.GetKey(Jump)&&IsGrounded){
             gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);
             IsGrounded=false;
             Debug.Log("Jump_registerd!");
@@ -52,11 +52,11 @@ public class Movement : MonoBehaviour
             if (HardCollider is not null)
             {
                 pressCounter++;
-                if (pressCounter < 3) return;
-                pressCounter = 0;
-                HardCollider.enabled = false;
-
-                return;
+                if (pressCounter > 2)
+                {
+                    pressCounter = 0;
+                    HardCollider.enabled = false;
+                }
             }
             if (weakCollider is not null) weakCollider.enabled = false;
         }
