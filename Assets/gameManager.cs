@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class gameManager : MonoBehaviour
 {
@@ -44,9 +46,12 @@ public class gameManager : MonoBehaviour
              GameObject singlePlaftorm;
             singlePlaftorm=Instantiate(platform,new Vector3(Random.Range((-PLATFORM_LIMIT+(size/2)),(+PLATFORM_LIMIT-(size/2))),-10,0), Quaternion.identity);
             singlePlaftorm.transform.localScale=new Vector3(size,.5f,1);
-            if(Random.Range(0,4)==2){
-                singlePlaftorm.GetComponent<abilites>().singleProperty=abilites.Property.THORNS;
-            }
+            // if(Random.Range(0,4)==2){
+            //     singlePlaftorm.GetComponent<abilites>().singleProperty=abilites.Property.THORNS;
+            // }
+
+            var typeToChoose = (abilites.Property)Random.Range(0, Enum.GetNames(typeof(abilites.Property)).Length - 1);
+            singlePlaftorm.GetComponent<abilites>().singleProperty=typeToChoose;
             platforms.Add(singlePlaftorm);
         }
         foreach(GameObject singlePlatform in platforms){
