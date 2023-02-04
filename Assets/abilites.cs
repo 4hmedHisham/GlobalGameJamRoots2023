@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class abilites : MonoBehaviour
 {
@@ -105,6 +106,8 @@ public class abilites : MonoBehaviour
             {
                 case Property.THORNS: 
                     Destroy(other.gameObject);
+                    gameManager.platforms = new List<GameObject>();
+                    SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
                     break;
                 case Property.TIMED_BRANCH:
                     IsPlayerTouchingMe=true;
@@ -112,6 +115,8 @@ public class abilites : MonoBehaviour
                 case Property.VENUS_FLYTRAP:
                     if(CurrentVenusFlyTrapProperty==Property.THORNS){
                         Destroy(other.gameObject);
+                        gameManager.platforms = new List<GameObject>();
+                        SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
                         break; 
                     }
                     break;

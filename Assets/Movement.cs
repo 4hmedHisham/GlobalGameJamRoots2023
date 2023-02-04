@@ -17,6 +17,7 @@ public class Movement : MonoBehaviour
     bool isEatPressed=false;
     bool isRightPressed=false;
     bool isLeftPressed=false;
+    private Animator animator;
 
     [SerializeField]float speed =0.02f;
     
@@ -28,13 +29,14 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
 
     void Update()
     {
+        animator.enabled = false;
         //KillBehaviour.PLATFORM_TAG;
         if(Input.GetKey(Jump)&&IsGrounded){
             gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpAmount, ForceMode2D.Impulse);
@@ -43,6 +45,8 @@ public class Movement : MonoBehaviour
         }
         if(Input.GetKey(Left)){
             gameObject.transform.position+=new Vector3(-speed,0,0);
+            gameObject.transform.rotation=Quaternion.Euler(0,180,0);
+            animator.enabled = true;
         }
         if(Input.GetKeyDown(Eat))
         {
@@ -68,6 +72,8 @@ public class Movement : MonoBehaviour
         }
         if(Input.GetKey(Right)){
             gameObject.transform.position+=new Vector3(speed,0,0);
+            gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+            animator.enabled = true;
         }
 
     }
