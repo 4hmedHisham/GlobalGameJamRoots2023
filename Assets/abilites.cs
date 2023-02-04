@@ -16,6 +16,20 @@ public class abilites : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        switch(singleProperty) 
+
+        {   
+            case Property.THORNS: 
+            gameObject.GetComponent<SpriteRenderer>().color=Color.red;
+            break;
+            case Property.WEAK_BRANCH:
+            gameObject.GetComponent<SpriteRenderer>().color=Color.green;
+            
+            break;
+        }
+        if(singleProperty==Property.THORNS){
+            
+        }
         
     }
 
@@ -29,10 +43,16 @@ public class abilites : MonoBehaviour
 		if(other.gameObject.tag==KillBehaviour.PLAYER_TAG){
 			Movement.IsGrounded=true;
             Debug.Log("Grounded set to true");
+            switch(singleProperty) 
 
-            if(singleProperty==Property.THORNS){
-                Destroy(other.gameObject);
+            {
+                case Property.THORNS: 
+                    Destroy(other.gameObject);
+                    break;
+                // case Property.WEAK_BRANCH:
+                //     gameObject.GetComponent<Collider2D>().
             }
+           
 		}
 
         

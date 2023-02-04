@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+
 
 public class Movement : MonoBehaviour
 {
@@ -37,6 +39,9 @@ public class Movement : MonoBehaviour
         }
         if(Input.GetKey(Eat)){
             
+            // Collider2D[] collidedObjects;
+            // gameObject.GetComponent<Collider2D>().OverlapCollider(ContactFilter2D.NoFilter(),collidedObjects);
+
         }
         if(Input.GetKey(Right)){
             gameObject.transform.position+=new Vector3(speed,0,0);

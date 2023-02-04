@@ -7,7 +7,7 @@ public class gameManager : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField]GameObject platform;
 
-   [SerializeField]GameObject Player;
+    [SerializeField]GameObject Player;
     [SerializeField]float platform_Speed=0.02f;
 
     public static List <GameObject> platforms= new List<GameObject>();
@@ -44,13 +44,16 @@ public class gameManager : MonoBehaviour
              GameObject singlePlaftorm;
             singlePlaftorm=Instantiate(platform,new Vector3(Random.Range((-PLATFORM_LIMIT+(size/2)),(+PLATFORM_LIMIT-(size/2))),-10,0), Quaternion.identity);
             singlePlaftorm.transform.localScale=new Vector3(size,.5f,1);
+            if(Random.Range(0,4)==2){
+                singlePlaftorm.GetComponent<abilites>().singleProperty=abilites.Property.THORNS;
+            }
             platforms.Add(singlePlaftorm);
         }
         foreach(GameObject singlePlatform in platforms){
             Debug.Log("InsideForEach!");
             singlePlatform.transform.position+=new Vector3(0,platform_Speed,0);
         }
-        Player.GetComponent<TrailRenderer>().transform.position+=new Vector3(0,platform_Speed,0);
+       
         if(Player.transform.position.y<-3){
             platform_Speed=0.3f+Player.transform.position.y*-1f*.01f;
         }
