@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class KillBehaviour : MonoBehaviour
 {
@@ -33,9 +35,10 @@ public class KillBehaviour : MonoBehaviour
 		//Debug.Log("Collided!");
 		if(other.tag==PLAYER_TAG){
 			Destroy(other.gameObject);
-			//Debug.Log("EnteredIFConditionPlayer!");
-			
-		}
+            //Debug.Log("EnteredIFConditionPlayer!");
+            gameManager.platforms = new List<GameObject>();
+            SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
+        }
 	}
 
 }
