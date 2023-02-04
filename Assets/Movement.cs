@@ -37,11 +37,15 @@ public class Movement : MonoBehaviour
         if(Input.GetKey(Left)){
             gameObject.transform.position+=new Vector3(-speed,0,0);
         }
-        if(Input.GetKey(Eat)){
-            
-            // Collider2D[] collidedObjects;
-            // gameObject.GetComponent<Collider2D>().OverlapCollider(ContactFilter2D.NoFilter(),collidedObjects);
+        if(Input.GetKey(Eat))
+        {
 
+            List<Collider2D> collidedObjects = new();
+            // gameObject.GetComponent<Collider2D>().OverlapCollider(ContactFilter2D.NoFilter(),collidedObjects);
+            gameObject.GetComponent<Collider2D>().OverlapCollider(new ContactFilter2D().NoFilter(), collidedObjects);
+            var weakCollider = collidedObjects.FirstOrDefault(x =>
+                x.gameObject.GetComponent<abilites>().singleProperty == abilites.Property.WEAK_BRANCH);
+            if (weakCollider is not null) weakCollider.enabled = false;
         }
         if(Input.GetKey(Right)){
             gameObject.transform.position+=new Vector3(speed,0,0);
