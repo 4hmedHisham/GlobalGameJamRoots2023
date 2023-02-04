@@ -8,7 +8,7 @@ public class abilites : MonoBehaviour
     public enum Property{
         STONE,
         WEAK_BRANCH,
-        //HARD_BRANCH,
+        HARD_BRANCH,
         THORNS,
         //TIMED_BRANCH
     }

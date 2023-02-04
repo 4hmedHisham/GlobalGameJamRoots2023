@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Unity.VisualScripting;
 
 
 public class Movement : MonoBehaviour
@@ -14,6 +15,7 @@ public class Movement : MonoBehaviour
     public static bool IsGrounded=false;
 
     [SerializeField]float speed =0.02f;
+    private int pressCounter = 0;
 
     void jump(){
 
@@ -45,6 +47,17 @@ public class Movement : MonoBehaviour
             gameObject.GetComponent<Collider2D>().OverlapCollider(new ContactFilter2D().NoFilter(), collidedObjects);
             var weakCollider = collidedObjects.FirstOrDefault(x =>
                 x.gameObject.GetComponent<abilites>().singleProperty == abilites.Property.WEAK_BRANCH);
+            var HardCollider = collidedObjects.FirstOrDefault(x =>
+                x.gameObject.GetComponent<abilites>().singleProperty == abilites.Property.HARD_BRANCH);
+            if (HardCollider is not null)
+            {
+                pressCounter++;
+                if (pressCounter < 3) return;
+                pressCounter = 0;
+                HardCollider.enabled = false;
+
+                return;
+            }
             if (weakCollider is not null) weakCollider.enabled = false;
         }
         if(Input.GetKey(Right)){
