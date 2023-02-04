@@ -20,20 +20,20 @@ public class KillBehaviour : MonoBehaviour
         
     }
 	void OnTriggerExit2D(Collider2D other){
-		Debug.Log("Exited!");
+		//Debug.Log("Exited!");
 		if(other.tag==PLATFORM_TAG){
 			Destroy(other.gameObject);
-			Debug.Log("EnteredIFConditionPLatform!");
+			//Debug.Log("EnteredIFConditionPLatform!");
 			gameManager.platforms.Remove(other.gameObject);
 			
 		}
 	}
 
     void OnTriggerEnter2D(Collider2D other){
-		Debug.Log("Collided!");
+		//Debug.Log("Collided!");
 		if(other.tag==PLAYER_TAG){
 			Destroy(other.gameObject);
-			Debug.Log("EnteredIFConditionPlayer!");
+			//Debug.Log("EnteredIFConditionPlayer!");
 			
 		}
 	}

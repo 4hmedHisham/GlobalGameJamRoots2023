@@ -55,7 +55,7 @@ public class gameManager : MonoBehaviour
             platforms.Add(singlePlaftorm);
         }
         foreach(GameObject singlePlatform in platforms){
-            Debug.Log("InsideForEach!");
+           // Debug.Log("InsideForEach!");
             singlePlatform.transform.position+=new Vector3(0,platform_Speed,0);
         }
        

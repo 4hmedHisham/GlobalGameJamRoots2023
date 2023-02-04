@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class abilites : MonoBehaviour
 {
-    
+    public int pressCounter = 0;
     public enum Property{
         STONE,
         WEAK_BRANCH,
@@ -24,12 +24,12 @@ public class abilites : MonoBehaviour
             break;
             case Property.WEAK_BRANCH:
             gameObject.GetComponent<SpriteRenderer>().color=Color.green;
-            
+            break;
+            case Property.HARD_BRANCH:
+            gameObject.GetComponent<SpriteRenderer>().color=new Color(150f/255f,75/255f,0f/255f);
             break;
         }
-        if(singleProperty==Property.THORNS){
-            
-        }
+
         
     }
 
@@ -39,10 +39,10 @@ public class abilites : MonoBehaviour
         
     }
     void OnCollisionEnter2D(Collision2D other){
-		Debug.Log("Player-Platfrom Collision!");
+		//Debug.Log("Player-Platfrom Collision!");
 		if(other.gameObject.tag==KillBehaviour.PLAYER_TAG){
 			Movement.IsGrounded=true;
-            Debug.Log("Grounded set to true");
+            //Debug.Log("Grounded set to true");
             switch(singleProperty) 
 
             {

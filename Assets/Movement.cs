@@ -13,9 +13,13 @@ public class Movement : MonoBehaviour
     KeyCode Eat=KeyCode.S;
     [SerializeField]float jumpAmount=1f;
     public static bool IsGrounded=false;
+    bool isJumpPressed=false;
+    bool isEatPressed=false;
+    bool isRightPressed=false;
+    bool isLeftPressed=false;
 
     [SerializeField]float speed =0.02f;
-    private int pressCounter = 0;
+    
 
     void jump(){
 
@@ -28,7 +32,8 @@ public class Movement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+
+    void Update()
     {
         //KillBehaviour.PLATFORM_TAG;
         if(Input.GetKey(Jump)&&IsGrounded){
@@ -51,10 +56,11 @@ public class Movement : MonoBehaviour
                 x.gameObject.GetComponent<abilites>().singleProperty == abilites.Property.HARD_BRANCH);
             if (HardCollider is not null)
             {
-                pressCounter++;
-                if (pressCounter > 2)
+                HardCollider.gameObject.GetComponent<abilites>().pressCounter++;
+                Debug.Log("Counter is "+HardCollider.gameObject.GetComponent<abilites>().pressCounter);
+                if (HardCollider.gameObject.GetComponent<abilites>().pressCounter > 2)
                 {
-                    pressCounter = 0;
+                    HardCollider.gameObject.GetComponent<abilites>().pressCounter = 0;
                     HardCollider.enabled = false;
                 }
             }
