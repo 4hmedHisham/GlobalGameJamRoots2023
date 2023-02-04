@@ -146,4 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44b154f061e47c143a8b7d4edf5a56c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 8403421969145168655, guid: 50ec49331c985324ca7e4a081faee1a0, type: 3}
+  pressCounter: 0
+  branchTimeout: 0
+  branchTimeoutPeriod: 0.4
+  singleProperty: 0
