@@ -15,6 +15,7 @@ public class abilites : MonoBehaviour
 
     public float venusTimerFlipFlop=0;
     public float VenusFlyTrapFlipFlopPeriod;
+    public Sprite[] sprites;
     public enum Property{
         STONE,
         WEAK_BRANCH,
@@ -29,21 +30,36 @@ public class abilites : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        switch(singleProperty) 
+        gameObject.transform.localScale += new Vector3(0, 2, 0);
+        gameObject.GetComponent<SpriteRenderer>().sprite = sprites[2];
+        gameObject.GetComponent<BoxCollider2D>().size = new Vector2(1, 0.1f);
+        switch (singleProperty) 
 
         {   
             case Property.THORNS: 
-            gameObject.GetComponent<SpriteRenderer>().color=Color.red;
-            break;
+            //gameObject.GetComponent<SpriteRenderer>().color=Color.red;
+            //gameObject.transform.localScale += new Vector3(0,2,0);
+                gameObject.GetComponent<SpriteRenderer>().sprite = sprites[0];
+                //gameObject.GetComponent<BoxCollider2D>().size = new Vector2(1, 0.1f);
+                break;
             case Property.WEAK_BRANCH:
-            gameObject.GetComponent<SpriteRenderer>().color=Color.green;
-            break;
+            //gameObject.GetComponent<SpriteRenderer>().color=Color.green;
+                gameObject.GetComponent<SpriteRenderer>().sprite = sprites[6];
+                //gameObject.transform.localScale += new Vector3(0, 2, 0);
+                //gameObject.GetComponent<BoxCollider2D>().size = new Vector2(1,0.1f);
+                break;
             case Property.HARD_BRANCH:
-            gameObject.GetComponent<SpriteRenderer>().color=new Color(150f/255f,75/255f,0f/255f);
-            break;
+            //gameObject.GetComponent<SpriteRenderer>().color=new Color(150f/255f,75/255f,0f/255f);
+                gameObject.GetComponent<SpriteRenderer>().sprite = sprites[1];
+                //gameObject.transform.localScale += new Vector3(0, 2, 0);
+                //gameObject.GetComponent<BoxCollider2D>().size = new Vector2(1, 0.1f);
+                break;
             case Property.TIMED_BRANCH:
-            gameObject.GetComponent<SpriteRenderer>().color=Color.gray;
-            break;
+            //gameObject.GetComponent<SpriteRenderer>().color=Color.gray;
+                gameObject.GetComponent<SpriteRenderer>().sprite = sprites[4];
+                //gameObject.transform.localScale += new Vector3(0, 2, 0);
+                //gameObject.GetComponent<BoxCollider2D>().size = new Vector2(1, 0.1f);
+                break;
             case Property.VENUS_FLYTRAP:
             gameObject.GetComponent<SpriteRenderer>().color=Color.gray;
             break;

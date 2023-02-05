@@ -111,7 +111,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.5}
   m_EdgeRadius: 0
 --- !u!50 &144953495763953108
 Rigidbody2D:
@@ -151,5 +151,12 @@ MonoBehaviour:
   branchTimeoutPeriod: 0.4
   venusTimerFlipFlop: 0
   VenusFlyTrapFlipFlopPeriod: 1
+  sprites:
+  - {fileID: 21300000, guid: ecd8462706b51ae409c6917c4ea34614, type: 3}
+  - {fileID: 21300000, guid: cffd196c73f7446449de01df40da8df8, type: 3}
+  - {fileID: 21300000, guid: 8e71e674869471e4a865ee811025ec85, type: 3}
+  - {fileID: 21300000, guid: 5fb90cd126bdf184faf3dc1d21c0d2d6, type: 3}
+  - {fileID: 21300000, guid: b4aea429de2acfa47917867331072c7d, type: 3}
+  - {fileID: 21300000, guid: f23cbe0e67317b443a7da93142061d96, type: 3}
   singleProperty: 0
   CurrentVenusFlyTrapProperty: 0
